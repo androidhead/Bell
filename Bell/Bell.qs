@@ -32,6 +32,6 @@
 		}
 
 		// Return number of times we saw a |0> and number of times we saw a |1>
-		return (count-numOnes, numOnes); //count-numOnes
+		return (count-numOnes, numOnes); //count-numOnes?  that is some weird syntax
 	}
 }
