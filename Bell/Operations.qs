@@ -5,5 +5,5 @@
     
     operation HelloQ () : Unit {
         Message("Hello quantum world!");
-    }
+    } 
 }
