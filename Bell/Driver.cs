@@ -11,7 +11,7 @@ namespace Quantum.Bell
         {
             using (var qsim = new QuantumSimulator())
             {
-                HelloQ.Run(qsim).Wait();
+                //HelloQ.Run(qsim).Wait();
             }
         }
     }
