@@ -1,0 +1,3 @@
+﻿Currently On
+https://docs.microsoft.com/en-us/quantum/quickstart?view=qsharp-preview&tabs=tabid-vs2017
+	->Step 5: Creating Superposition
