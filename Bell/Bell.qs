@@ -22,7 +22,8 @@
 			{
 				Set (initial, qubit); //set qubit to passed in value
 
-				X(qubit); //flip right before measuring
+				//X(qubit); //flip right before measuring
+				H(qubit); //Hadamard gate ("1/2 flip") instead of a straight flip.  SUPA-POSITION!
 				let res = M(qubit); 
 
 				// Count the number of ones we saw:
