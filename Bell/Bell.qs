@@ -16,15 +16,18 @@
 	operation BellTest (count: Int, initial: Result) : (Int, Int)
 	{
 		mutable numOnes = 0;		
-		using(qubit = Qubit())
+		using(qubits = Qubit[2])
 		{
 			for(test in 1..count)
 			{
-				Set (initial, qubit); //set qubit to passed in value
-
-				//X(qubit); //flip right before measuring
-				H(qubit); //Hadamard gate ("1/2 flip") instead of a straight flip.  SUPA-POSITION!
-				let res = M(qubit); 
+				Set (initial, qubits[0]); //set first qubit to passed in value
+				Set (Zero, qubits[1]); //set other qubit to zero
+				
+				//Hadamard + CNOT seems like that machine from the MS video that makes a quantum operation reversible 
+				//(or something like that, I don't remember all the terminology)
+				H(qubits[0]); //Hadamard gate ("1/2 flip") instead of a straight flip.  SUPA-POSITION!
+				CNOT(qubits[0], qubits[1]);
+				let res = M(qubits[0]); 
 
 				// Count the number of ones we saw:
 				if(res == One)
@@ -32,7 +35,8 @@
 					set numOnes = numOnes + 1;
 				}
 			}
-			Set(Zero, qubit);
+			Set(Zero, qubits[0]);
+			Set(Zero, qubits[1]);
 		}
 
 		// Return number of times we saw a |0> and number of times we saw a |1>
