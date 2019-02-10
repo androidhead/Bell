@@ -13,9 +13,10 @@
 		}
     }
 
-	operation BellTest (count: Int, initial: Result) : (Int, Int)
+	operation BellTest (count: Int, initial: Result) : (Int, Int, Int)
 	{
 		mutable numOnes = 0;		
+		mutable agree = 0;
 		using(qubits = Qubit[2])
 		{
 			for(test in 1..count)
@@ -29,6 +30,11 @@
 				CNOT(qubits[0], qubits[1]);
 				let res = M(qubits[0]); 
 
+				if(M(qubits[1]) == res) //if qubits[0] and qubits[1] match
+				{
+					set agree = agree + 1; 
+				}
+
 				// Count the number of ones we saw:
 				if(res == One)
 				{
@@ -40,6 +46,6 @@
 		}
 
 		// Return number of times we saw a |0> and number of times we saw a |1>
-		return (count-numOnes, numOnes); //count-numOnes?  that is some weird syntax
+		return (count - numOnes, numOnes, agree); 
 	}
 }
