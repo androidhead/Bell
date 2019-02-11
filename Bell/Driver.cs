@@ -11,8 +11,6 @@ namespace Quantum.Bell
         {
             using (var qsim = new QuantumSimulator())
             {
-                // Try initial values
-                // Try initial values
                 Result[] initials = new Result[] { Result.Zero, Result.One };
                 foreach (Result initial in initials)
                 {
@@ -20,14 +18,13 @@ namespace Quantum.Bell
                     var (numZeros, numOnes, agree) = res;
                     System.Console.WriteLine(
                         $"Init:{initial,-4} 0s={numZeros,-4} 1s={numOnes,-4} agree={agree,-4}");
-                
-                    //trying a better visualization
-                    //Console.WriteLine(
-                    //    $"Init      0s      1s");
-                    //Console.WriteLine(
-                    //    $"{(initial,-4).ToString().PadRight(10)}{(numZeros,-4).ToString().PadRight(8)}{(numOnes,-4)}");
                 }
             }
+
+            //run this instead of the above using block for resource estimation
+            //var estimator = new ResourcesEstimator();
+            //BellTest.Run(estimator, 1000, Result.Zero).Wait();
+            //System.Console.WriteLine(estimator.ToTSV());
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
